@@ -1,5 +1,13 @@
+<table class="table">
 
-
-<p>team list table component works</p><p *ngFor="let tempTeam of teams">test
-    {{ tempTeam.teamName }}
-</p>
+    <thead class="table-dark">
+        <tr>
+            <th>NHL TEAMS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tempTeam of teams">
+            <td>{{ tempTeam.teamName }}</td>
+        </tr>
+    </tbody>
+</table>
