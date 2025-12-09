@@ -20,8 +20,8 @@ public class Team {
     private String teamName;
     @Column(name = "year")
     private String year;
-    //@Column(name = "logo")
-    //private String logo;
+    @Column(name = "logo")
+    private String logo;
     @Column(name = "wins")
     private Integer wins;
     @Column(name = "losses")

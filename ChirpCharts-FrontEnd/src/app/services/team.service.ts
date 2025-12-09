@@ -12,7 +12,14 @@ export class TeamService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getTeamList(): Observable<Team[]> {
+    
+
+  getTeamList(theFranchiseId: number): Observable<Team[]> {
+
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theFranchiseId}`
+
+    //swtich our searchUrl with base Url to get the teams id
+
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response._embedded.teams)
     );
