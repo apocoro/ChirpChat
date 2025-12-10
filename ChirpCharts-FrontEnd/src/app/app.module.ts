@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TeamService } from './services/team.service';
 import { TeamYearsComponent } from './component/team-years/team-years.component';
 import { Routes } from '@angular/router';
+import { TeamDetailsComponent } from './component/team-details/team-details.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TeamListComponent,
-    TeamYearsComponent
+    TeamYearsComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,

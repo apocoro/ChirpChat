@@ -22,5 +22,8 @@ public interface TeamRepository extends JpaRepository<Team, Integer> {
     List<Team> getTeamList();
 
     @Query("SELECT t FROM Team t WHERE t.franchiseId = :franchiseId")
-    List<Team> getTeamYearsList(@Param("franchiseId") Long franchiseId);
+    List<Team> getTeamYearsList(@Param("franchiseId") Integer franchiseId);
+
+    @Query("SELECT t FROM Team t WHERE t.franchiseId = :franchiseId and t.year  = :year")
+    List<Team> getTeamDetails(@Param("franchiseId") Integer franchiseId, @Param("year") Integer year);
 }

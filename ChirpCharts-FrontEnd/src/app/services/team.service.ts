@@ -37,6 +37,14 @@ getTeamYearsList(theFranchiseId: number): Observable<Team[]> {
 
     return this.httpClient.get<Team[]>(searchUrl);
 }
+
+getTeamDetails(theFranchiseId: number, theYear: number): Observable<Team[]> {
+const searchUrl = `${this.baseUrl}/team-details?franchiseId=${theFranchiseId}&year=${theYear}`;
+
+    return this.httpClient.get<Team[]>(searchUrl);
+
+}
+
 }
 
 

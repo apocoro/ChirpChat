@@ -25,8 +25,14 @@ public class TeamController {
     }
 
     @GetMapping("/team-years")
-    public List<Team> getTeamYearsList(@RequestParam Long franchiseId) {
+    public List<Team> getTeamYearsList(@RequestParam Integer franchiseId) {
         return teamRepository.getTeamYearsList(franchiseId);
     }
+
+    @GetMapping("/team-details")
+    public List<Team> getTeamDetails(@RequestParam Integer franchiseId, @RequestParam Integer year) {
+        return teamRepository.getTeamDetails(franchiseId, year);
+    }
+
 
 }
