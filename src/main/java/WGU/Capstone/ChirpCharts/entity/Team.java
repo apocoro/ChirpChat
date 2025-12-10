@@ -19,7 +19,7 @@ public class Team {
     @Column(name = "team_name")
     private String teamName;
     @Column(name = "year")
-    private String year;
+    private Integer year;
     @Column(name = "logo")
     private String logo;
     @Column(name = "wins")

@@ -1,1 +1,17 @@
-<p>team-years works!</p>
+<table class="table">
+
+    <thead class="table-dark">
+        <tr>
+            <th>NHL TEAMS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tempTeam of teams">
+  <td>
+    <a routerLink="/team/{{tempTeam.franchiseId}}">
+      {{ tempTeam.teamName }}test
+    </a>
+  </td>
+</tr>
+    </tbody>
+</table><p>team-years works!</p>

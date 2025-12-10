@@ -11,19 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 export class TeamListComponent implements OnInit {
 
   teams: Team[] = [];
-  currentTeamId: number = 1;
 
   constructor(private teamService: TeamService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
-
-
       this.listTeams();
       });
   }
-
+/*
   listTeams() {
     // check if "id" paramter is available
     const hasTeamId: boolean = this.route.snapshot.paramMap.has("id");
@@ -41,6 +38,15 @@ export class TeamListComponent implements OnInit {
         this.teams = data;
       }
     )
-  }
+  } */
 
+  listTeams() {
+    // now get teams for the given id
+    this.teamService.getTeamList().subscribe(
+      data => {
+        this.teams = data;
+  }
+)
+
+}
 }
