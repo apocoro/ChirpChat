@@ -26,8 +26,8 @@ public class Team {
     private Integer wins;
     @Column(name = "losses")
     private Integer losses;
-    @Column(name = "over_time_wins")
-    private Integer overTimeWins;
+    @Column(name = "over_time_losses")
+    private Integer overTimeLosses;
     @Column(name = "last_updated")
     private Date lastUpdated;
 }

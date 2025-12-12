@@ -2,14 +2,15 @@
 
     <thead class="table-dark">
         <tr>
-            <th>NHL TEAMS</th>
+            <th>{{ teams[0].teamName }}</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let tempTeam of teams">
   <td>
     <a routerLink="/team/{{tempTeam.franchiseId}}/{{tempTeam.year}}">
-      {{ tempTeam.teamName }}test
+      {{ tempTeam.year.toString().slice(0,4) }}-{{ tempTeam.year.toString().slice(6,8) }}
+              {{tempTeam.teamName}}
     </a>
   </td>
 </tr>
