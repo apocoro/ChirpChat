@@ -45,6 +45,7 @@ const searchUrl = `${this.baseUrl}/team-details?franchiseId=${theFranchiseId}&ye
 
 }
 
+
 }
 
 

@@ -11,8 +11,8 @@ public class ChirpChat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "team_id")
-    private Long teamId;
+    @Column(name = "franchise_id")
+    private Long franchiseId;
     @Column(name = "year")
     private String year;
     @Column(name = "message")

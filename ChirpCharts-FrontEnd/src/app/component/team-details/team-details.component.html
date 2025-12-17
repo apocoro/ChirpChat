@@ -1,6 +1,5 @@
 <p>team-details works!</p>
 <table class="table">
-
     <thead class="table-dark">
         <tr>
             <th colspan="3">
@@ -9,6 +8,7 @@
               </th>
         </tr>
     </thead>
+     <tbody>
     <tr>
       <td>
         Wins
@@ -20,12 +20,42 @@
         OTLs
       </td>
     </tr>
-    <tbody>
-        <tr *ngFor="let tempTeam of teams">
-    <td>{{ tempTeam.wins }}</td>
-    <td>{{ tempTeam.losses }}</td>
-    <td>{{ tempTeam.overTimeLosses}} 
+    <tr *ngFor="let tempTeam of teams">
+      <td>{{ tempTeam.wins }}</td>
+      <td>{{ tempTeam.losses }}</td>
+      <td>{{ tempTeam.overTimeLosses}} 
   </td>
 </tr>
-    </tbody>
+<tr *ngFor="let tempMessage of messages">
+      <td colspan="2">
+        <span *ngIf="editingMessageId !== tempMessage.id">
+          {{ tempMessage.message }}
+        </span>
+        <textarea *ngIf="editingMessageId === tempMessage.id" class="form-control" [(ngModel)]="editedMessage">
+        </textarea>
+      </td>
+      <td class="text-end">
+        <ng-container *ngIf="editingMessageId !== tempMessage.id">
+          <button class="btn btn-sm btn-warning me-1" (click)="startEdit(tempMessage)">
+            Edit
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteChirp(tempMessage.id!)">
+            Delete
+          </button>
+        </ng-container>
+        <ng-container *ngIf="editingMessageId === tempMessage.id">
+          <button class="btn btn-sm btn-success me-1" (click)="updateChirp(tempMessage.id!)">
+            Update
+          </button>
+          <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
 
+        </ng-container> 
+    </tr>
+  </tbody>
+</table>
+<div class="mb-3 mt-3">
+  <textarea class="form-control" [(ngModel)]="newMessage" placeholder="Add a message..."></textarea>
+  <button class="btn btn-primary mt-2" (click)="addNewChirp()">Post</button>
+</div>

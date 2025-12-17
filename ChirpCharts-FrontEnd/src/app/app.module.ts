@@ -9,6 +9,7 @@ import { TeamService } from './services/team.service';
 import { TeamYearsComponent } from './component/team-years/team-years.component';
 import { Routes } from '@angular/router';
 import { TeamDetailsComponent } from './component/team-details/team-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [TeamService],
   bootstrap: [AppComponent]

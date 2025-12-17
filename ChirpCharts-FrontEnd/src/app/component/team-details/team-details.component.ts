@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Team } from '../../common/team';
 import { TeamService } from '../../services/team.service';
+import { ChirpChatService } from '../../services/chirp-chat.service';
 import { ActivatedRoute } from '@angular/router';
+import { Chat } from '../../common/chat';
 
 @Component({
   selector: 'app-team-details',
@@ -10,10 +12,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TeamDetailsComponent {
   teams: Team[] = [];
+  messages: Chat[] = [];
+  newMessage = '';
   franchiseId: number = 1;
-  year = 200020001
+  year = 20242025
+  editingMessageId: number | null = null;
+  editedMessage: string = '';
 
-  constructor(private teamService: TeamService,
+
+  constructor(private teamService: TeamService, 
+    private chirpChatService: ChirpChatService,
     private route: ActivatedRoute) { }
 
     ngOnInit(): void {
@@ -40,5 +48,57 @@ listDetails() {
       this.teams = data;
     }
   )
+  this.chirpChatService.getChirpChatForTeam(this.franchiseId,this.year).subscribe(
+    data => {
+      this.messages = data
+    }
+  )
 }
+
+deleteChirp(theChatId: number) {
+  this.chirpChatService.deleteChirp(theChatId).subscribe(() => {
+    this.listDetails();
+  })
+}
+
+addNewChirp() {
+  const chat: Chat = {
+    message: this.newMessage,
+    franchiseId: this.franchiseId,
+    year: this.year
+  }
+  this.chirpChatService.createNewChirpChat(chat).subscribe(() => {
+    this.listDetails();
+    this.newMessage = ''
+  })
+}
+
+startEdit(message: Chat) {
+  this.editingMessageId = message.id!;
+  this.editedMessage = message.message!;
+}
+
+cancelEdit() {
+  this.editingMessageId = null;
+  this.editedMessage = '';
+}
+
+updateChirp(chatId: number) {
+  if (!this.editedMessage.trim()) {
+    return;
+  }
+
+  const updatedChat: Chat = {
+    id: chatId,
+    message: this.editedMessage,
+    franchiseId: this.franchiseId,
+    year: this.year
+  };
+  this.chirpChatService.updateChirpChat(chatId, updatedChat).subscribe(() => {
+    this.listDetails();
+    this.cancelEdit();
+  })
+}
+
+
 }
