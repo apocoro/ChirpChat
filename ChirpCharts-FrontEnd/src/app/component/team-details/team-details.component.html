@@ -1,58 +1,68 @@
-<p>team-details works!</p>
 <table class="table">
-    <thead class="table-dark">
-        <tr>
-            <th colspan="3">
-              {{ teams[0].year.toString().slice(0,4) }}-{{ teams[0].year.toString().slice(6,8) }}
-              {{teams[0].teamName}} 
-              </th>
-        </tr>
-    </thead>
-     <tbody>
+  <thead class="table-dark">
     <tr>
-      <td>
+      <th colspan="3">
+        {{ teams[0].year.toString().slice(0,4) }}-{{ teams[0].year.toString().slice(6,8) }}
+        {{teams[0].teamName}} 
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="fw-bold bg-secondary text-white border">
         Wins
       </td>
-      <td>
+      <td class="fw-bold bg-secondary text-white border">
         Losses
       </td>
-      <td>
+      <td class="fw-bold bg-secondary text-white border">
         OTLs
       </td>
     </tr>
     <tr *ngFor="let tempTeam of teams">
-      <td>{{ tempTeam.wins }}</td>
-      <td>{{ tempTeam.losses }}</td>
-      <td>{{ tempTeam.overTimeLosses}} 
-  </td>
-</tr>
-<tr *ngFor="let tempMessage of messages">
-      <td colspan="2">
-        <span *ngIf="editingMessageId !== tempMessage.id">
-          {{ tempMessage.message }}
-        </span>
-        <textarea *ngIf="editingMessageId === tempMessage.id" class="form-control" [(ngModel)]="editedMessage">
-        </textarea>
+      <td class="fw-bold bg-light border">{{ tempTeam.wins }}</td>
+      <td class="fw-bold bg-light border">{{ tempTeam.losses }}</td>
+      <td class="fw-bold bg-light border">{{ tempTeam.overTimeLosses}}
       </td>
-      <td class="text-end">
-        <ng-container *ngIf="editingMessageId !== tempMessage.id">
-          <button class="btn btn-sm btn-warning me-1" (click)="startEdit(tempMessage)">
-            Edit
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="deleteChirp(tempMessage.id!)">
-            Delete
-          </button>
-        </ng-container>
-        <ng-container *ngIf="editingMessageId === tempMessage.id">
-          <button class="btn btn-sm btn-success me-1" (click)="updateChirp(tempMessage.id!)">
-            Update
-          </button>
-          <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">
-            Cancel
-          </button>
-
-        </ng-container> 
     </tr>
+  </tbody>
+</table> 
+<table class="table">
+  <thead class="table-secondary">
+    <tr>
+    <th colspan="3">
+      Chirp Chat
+    </th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tempMessage of messages">
+    <td colspan="2">
+      <span *ngIf="editingMessageId !== tempMessage.id">
+        {{ tempMessage.message }}
+      </span>
+      <textarea *ngIf="editingMessageId === tempMessage.id" class="form-control" [(ngModel)]="editedMessage">
+        </textarea>
+    </td>
+    <td class="text-end">
+      <ng-container *ngIf="editingMessageId !== tempMessage.id">
+        <button class="btn btn-sm btn-warning me-1" (click)="startEdit(tempMessage)">
+          Edit
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="deleteChirp(tempMessage.id!)">
+          Delete
+        </button>
+      </ng-container>
+      <ng-container *ngIf="editingMessageId === tempMessage.id">
+        <button class="btn btn-sm btn-success me-1" (click)="updateChirp(tempMessage.id!)">
+          Update
+        </button>
+        <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">
+          Cancel
+        </button>
+
+      </ng-container>
+  </tr>
   </tbody>
 </table>
 <div class="mb-3 mt-3">

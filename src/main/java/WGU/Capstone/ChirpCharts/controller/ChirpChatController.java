@@ -33,7 +33,7 @@ public class ChirpChatController {
     //Update message by id
     @PutMapping("/{id}")
     public ChirpChat updateMessage(
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestBody ChirpChat chat) {
 
         chat.setId(id);
@@ -42,7 +42,7 @@ public class ChirpChatController {
 
     //Delete message by id
     @DeleteMapping("/{id}")
-    public void deleteMessage(@PathVariable Long id) {
+    public void deleteMessage(@PathVariable Integer id) {
         chirpChatRepository.deleteById(id);
     }
 

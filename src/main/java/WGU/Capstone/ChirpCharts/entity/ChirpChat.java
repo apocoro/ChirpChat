@@ -10,11 +10,11 @@ public class ChirpChat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "franchise_id")
-    private Long franchiseId;
+    private Integer franchiseId;
     @Column(name = "year")
-    private String year;
+    private Integer year;
     @Column(name = "message")
     private String message;
 }

@@ -11,12 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 export class TeamListComponent implements OnInit {
 
   teams: Team[] = [];
+  teamsSearch: Team[] = [];
+  searchField: string = '';
 
   constructor(private teamService: TeamService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(() => {
+    this.route.queryParams.subscribe(params => {
+      this.searchField = params['search'] || '';
       this.listTeams();
       });
   }
@@ -41,12 +44,22 @@ export class TeamListComponent implements OnInit {
   } */
 
   listTeams() {
+    console.log('Search query:', this.searchField); // DEBUG
+
     // now get teams for the given id
     this.teamService.getTeamList().subscribe(
       data => {
         this.teams = data;
+
+        if (this.searchField) {
+          this.teamsSearch = this.teams.filter(team => 
+            team.teamName.toLowerCase().includes(this.searchField.toLowerCase())
+          );
+        } else {
+          this.teamsSearch = this.teams;
+        }
   }
-)
+);
 
 }
 }
