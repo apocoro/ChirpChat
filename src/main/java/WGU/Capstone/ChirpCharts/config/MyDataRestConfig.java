@@ -29,12 +29,15 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 .withCollectionExposure((metadata, methods) ->
                         methods.disable(unsupportedActions));
 
-        // Allow Angular frontend to access the API
+        // CORS is handled by CorsFilter.java - disable this to avoid conflicts
+        // Commenting out to let CorsFilter handle everything
+        /*
         cors.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:4200",
                         "https://chirpcharts.com"
                 )
                 .allowedMethods("GET");
+        */
     }
 }
