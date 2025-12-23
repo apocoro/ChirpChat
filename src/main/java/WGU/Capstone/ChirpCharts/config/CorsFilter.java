@@ -23,7 +23,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Origin", "https://chirpcharts.com");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
-        response.setHeader("Access-Control-Allow-Credentials", "true");
+        // Removed allowCredentials to avoid conflicts
         response.setHeader("Access-Control-Max-Age", "3600");
 
         // Handle preflight OPTIONS requests immediately
