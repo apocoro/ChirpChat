@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
@@ -13,7 +12,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(
             RepositoryRestConfiguration config,
-            CorsRegistry cors) {
+            org.springframework.web.servlet.config.annotation.CorsRegistry cors) {
 
         // Disable write operations for Team
         HttpMethod[] unsupportedActions = {
@@ -29,15 +28,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 .withCollectionExposure((metadata, methods) ->
                         methods.disable(unsupportedActions));
 
-        // CORS is handled by CorsFilter.java - disable this to avoid conflicts
-        // Commenting out to let CorsFilter handle everything
-        /*
-        cors.addMapping("/**")
-                .allowedOrigins(
-                        "http://localhost:4200",
-                        "https://chirpcharts.com"
-                )
-                .allowedMethods("GET");
-        */
+        // Do NOT configure CORS here - WebConfig handles it
     }
 }
