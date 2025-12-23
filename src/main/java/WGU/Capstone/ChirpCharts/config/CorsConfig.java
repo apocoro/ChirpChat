@@ -16,11 +16,10 @@ public class CorsConfig {
                 registry.addMapping("/**") // Apply CORS to all endpoints
                         .allowedOrigins(
                                 "http://localhost:4200", // Angular dev server
-                                "http://localhost",      // Docker local testing
-                                "http://18.222.22.63"   // EC2 instance
+                                "https://chirpcharts.com"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowCredentials(true); // Allows cookies/auth if needed
+                        .allowedHeaders("*"); // Allows cookies/auth if needed
             }
         };
     }
