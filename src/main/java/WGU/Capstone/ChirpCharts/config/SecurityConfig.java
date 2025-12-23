@@ -17,13 +17,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // disable CSRF protection
+                // CHANGE #1: Moved .cors() to the TOP (was at the bottom)
+                // This ensures CORS headers are added BEFORE security checks
+                .cors(Customizer.withDefaults())
+
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll()  // allow all API endpoints
-                        .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll() // allow preflight requests
-                        .anyRequest().permitAll() // allow other requests if needed
-                )
-                .cors(Customizer.withDefaults()); // enable CORS using the CorsConfigurationSource bean
+                        // CHANGE #2: Moved OPTIONS to the FIRST matcher
+                        // Preflight requests must be allowed before other rules
+                        .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers("/api/**").permitAll()
+                        .anyRequest().permitAll()
+                );
 
         return http.build();
     }
@@ -32,24 +37,21 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allowed origins for frontend
         config.setAllowedOrigins(
                 List.of(
-                        "https://chirpcharts.com" // production frontend
-                        // "http://localhost:4200" // uncomment for local dev
+                        "https://chirpcharts.com",
+                        "http://localhost:4200" // uncomment if testing locally
                 )
         );
 
-        // Allowed HTTP methods
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-
-        // Allowed headers
         config.setAllowedHeaders(List.of("*"));
-
-        // Allow credentials (cookies/auth headers)
         config.setAllowCredentials(true);
 
-        // Map CORS config to all endpoints
+        // CHANGE #3: Added this line
+        // Allows browser to see response headers from your API
+        config.setExposedHeaders(List.of("*"));
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
 
