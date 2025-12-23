@@ -17,12 +17,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())           // disable CSRF
-                .authorizeHttpRequests(auth -> auth     // allow all requests
+                .csrf(csrf -> csrf.disable())           // disable CSRF protection (keep it off for API calls)
+                .authorizeHttpRequests(auth -> auth     // allow all requests to API and other endpoints
                         .requestMatchers("/api/**").permitAll()
                         .anyRequest().permitAll()
                 )
-                .cors(Customizer.withDefaults());       // enable CORS
+                .cors(Customizer.withDefaults());       // enable CORS using the CorsConfigurationSource bean
 
         return http.build();
     }
@@ -30,18 +30,28 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+
+        // 🔹 Set allowed origins: only production Angular app (add localhost for dev testing if needed)
         config.setAllowedOrigins(
                 List.of(
-                        "https://chirpcharts.com",
-                        "http://chirpcharts.com",
-                        "http://localhost:4200"
+                        "https://chirpcharts.com" // production Angular frontend
+                        // "http://localhost:4200" // optional for local dev
                 )
         );
+
+        // 🔹 Allow common HTTP methods for API
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // 🔹 Allow all headers
         config.setAllowedHeaders(List.of("*"));
 
+        // 🔹 ADDED: allow credentials (cookies or authentication headers if needed)
+        config.setAllowCredentials(true);
+
+        // Map the CORS configuration to all endpoints
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
+
         return source;
     }
 }
