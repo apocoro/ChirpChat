@@ -1,0 +1,10 @@
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/ChirpChartsApplication.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/config/CorsConfig.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/config/MyDataRestConfig.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/controller/ChirpChatController.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/controller/TeamController.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/dao/ChirpChatRepository.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/dao/TeamRepository.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/entity/ChirpChat.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/entity/Team.java
+/Users/Andrew/Documents/WGU-Capstone/d424-software-engineering-capstone/src/main/java/WGU/Capstone/ChirpCharts/service/TeamService.java

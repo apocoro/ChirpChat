@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://18.222.22.63", "http://localhost"})
 @RestController
 @RequestMapping("/api/chirpChat")
 
