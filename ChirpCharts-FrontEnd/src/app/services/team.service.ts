@@ -8,7 +8,7 @@ import { Team } from '../common/team';
 })
 export class TeamService {
 
-  private baseUrl = "http://easygoing-happiness.railway.internal:8080/api/teams";
+  private baseUrl = "https://back-end-java-springboot-chirpcharts-production.up.railway.app/api/teams";
 
 
 
