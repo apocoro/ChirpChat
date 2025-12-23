@@ -8,7 +8,8 @@ import { Team } from '../common/team';
 })
 export class TeamService {
 
-  private baseUrl = "http://13.59.103.132:8080/api/teams";
+  private baseUrl = "http://easygoing-happiness.railway.internal:8080/api/teams";
+
 
 
   constructor(private httpClient: HttpClient) { }
