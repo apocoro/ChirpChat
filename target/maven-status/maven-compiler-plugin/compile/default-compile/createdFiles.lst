@@ -3,7 +3,7 @@ WGU/Capstone/ChirpCharts/entity/ChirpChat.class
 WGU/Capstone/ChirpCharts/entity/Team.class
 WGU/Capstone/ChirpCharts/dao/ChirpChatRepository.class
 WGU/Capstone/ChirpCharts/dao/TeamRepository.class
+WGU/Capstone/ChirpCharts/config/WebConfig.class
 WGU/Capstone/ChirpCharts/controller/TeamController.class
 WGU/Capstone/ChirpCharts/service/TeamService.class
 WGU/Capstone/ChirpCharts/controller/ChirpChatController.class
-WGU/Capstone/ChirpCharts/config/MyDataRestConfig.class
