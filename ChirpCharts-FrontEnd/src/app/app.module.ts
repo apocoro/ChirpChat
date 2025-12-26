@@ -7,7 +7,7 @@ import { TeamListComponent } from './component/team-list/team-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TeamService } from './services/team.service';
 import { TeamYearsComponent } from './component/team-years/team-years.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { TeamDetailsComponent } from './component/team-details/team-details.component';
 import { FormsModule } from '@angular/forms';
 
@@ -28,6 +28,7 @@ const routes: Routes = [
     TeamDetailsComponent
   ],
   imports: [
+    RouterModule.forRoot(routes, {useHash: true}),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
