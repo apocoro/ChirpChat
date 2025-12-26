@@ -54,9 +54,10 @@ export class TeamListComponent implements OnInit {
         if (this.searchField) {
           this.teamsSearch = this.teams.filter(team => 
             team.teamName.toLowerCase().includes(this.searchField.toLowerCase())
-          );
+          ).sort((a, b) => a.teamName.localeCompare(b.teamName));
         } else {
-          this.teamsSearch = this.teams;
+          this.teamsSearch = this.teams 
+          .sort((a, b) => a.teamName.localeCompare(b.teamName));
         }
   }
 );
