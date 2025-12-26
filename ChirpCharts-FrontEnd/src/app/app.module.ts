@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: 'team', component: TeamListComponent },
-  {path: 'team/:franchiseId', component: TeamListComponent },
+  {path: 'team/:franchiseId', component: TeamYearsComponent },
+  {path: 'team/:franchiseId/:year', component: TeamDetailsComponent },
   {path: '', redirectTo: 'team', pathMatch: 'full' },
   {path: '**', redirectTo: 'team', pathMatch: 'full' }
   
