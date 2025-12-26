@@ -1,10 +1,10 @@
 <table class="table">
 
-    <thead class="table-dark">
-        <tr>
-            <th>{{ teams[0].teamName }}</th>
-        </tr>
-    </thead>
+<thead class="table-dark">
+    <tr *ngIf="teams.length > 0">
+        <th>{{ teams[0].teamName }}</th>
+    </tr>
+</thead>
     <tbody>
         <tr *ngFor="let tempTeam of teams">
   <td>
