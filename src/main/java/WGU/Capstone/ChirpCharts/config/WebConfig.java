@@ -10,7 +10,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("https://chirpcharts.com", "https://frontend-angular-chirpcharts-production.up.railway.app")
+                .allowedOriginPatterns("https://chirpcharts.com",
+                        "https://frontend-angular-chirpcharts-production.up.railway.app",
+                        "welcoming-embrace-production.up.railway.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .maxAge(3600);
     }
