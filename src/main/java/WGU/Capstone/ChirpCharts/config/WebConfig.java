@@ -12,7 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOriginPatterns("https://chirpcharts.com",
                         "https://frontend-angular-chirpcharts-production.up.railway.app",
-                        "https://welcoming-embrace-production.up.railway.app")
+                        //"https://welcoming-embrace-production.up.railway.app"
+                        "https://striking-flow-production-66bd.up.railway.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .maxAge(3600);
     }
