@@ -8,8 +8,8 @@ import { Team } from '../common/team';
 })
 export class TeamService {
 
-  //private baseUrl = "https://back-end-java-springboot-chirpcharts-production.up.railway.app/api/teams";
-  private baseUrl = "https://chirpchartsorsomething-production.up.railway.app/api/teams";
+  private baseUrl = "https://back-end-java-springboot-chirpcharts-production.up.railway.app/api/teams";
+
 
 
   constructor(private httpClient: HttpClient) { }

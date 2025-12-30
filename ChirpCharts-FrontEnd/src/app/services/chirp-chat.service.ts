@@ -8,8 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class ChirpChatService {
 
-  //private baseUrl = "https://back-end-java-springboot-chirpcharts-production.up.railway.app/api/chirpChat"
-  private baseUrl = "https://chirpchartsorsomething-production.up.railway.app/api/chirpChat"
+  private baseUrl = "https://back-end-java-springboot-chirpcharts-production.up.railway.app/api/chirpChat"
 
   constructor(private httpClient: HttpClient) { }
 
